@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Controllers {
     [RequireComponent(typeof(Animator))]
@@ -11,7 +12,17 @@ namespace Controllers {
         }
 
         private void Start() {
-            animator.SetBool(IsWaiting, true);
+            StartCoroutine(ChangeAnimatorState());
+        }
+
+        private IEnumerator ChangeAnimatorState() {
+            while (true) {
+                animator.SetBool(IsWaiting, true);
+                yield return new WaitForSeconds(5f);
+
+                animator.SetBool(IsWaiting, false);
+                yield return new WaitForSeconds(7f);
+            }
         }
     }
 }
