@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Controllers {
     [RequireComponent(typeof(Animator))]
     public class AnimSphereController : MonoBehaviour {
+        // [SerializeField] Animator animator = default // Works too
         private Animator animator;
         private static readonly int IsWaiting = Animator.StringToHash("isWaiting");
 
