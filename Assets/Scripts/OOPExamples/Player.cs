@@ -9,7 +9,7 @@ namespace OOPExamples {
         public Player() {
             health = 100f;
             items = new List<Item> {
-                new Item("Potion", 5),
+                new Potion(5, 10f),
                 new Item("Lapin", 1),
                 new Item("Épée", 1)
             };
@@ -17,10 +17,8 @@ namespace OOPExamples {
         
         public void DrinkPotion() {
             foreach (Item item in items) {
-                if (item.Name == "Potion") {
-                    item.UseItem();
-                    health += 10f;
-                }
+                if (item is Potion potion)
+                    health += potion.HealingAmount;
             }
         }
 
