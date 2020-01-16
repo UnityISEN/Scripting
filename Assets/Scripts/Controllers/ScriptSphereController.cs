@@ -2,6 +2,7 @@
 
 namespace Controllers {
     public class ScriptSphereController : MonoBehaviour {
+        [SerializeField] private float speed = 1f;
         private Transform sphereTransform;
         private float t;
         private bool isAscending;
@@ -16,10 +17,10 @@ namespace Controllers {
             Vector3 position = sphereTransform.position;
 
             if (isAscending) {
-                t += 0.01f;
+                t += speed * 0.01f;
                 if (t >= 1f) isAscending = false;
             } else {
-                t -= 0.01f;
+                t -= speed * 0.01f;
                 if (t <= 0f) isAscending = true;
             }
             
