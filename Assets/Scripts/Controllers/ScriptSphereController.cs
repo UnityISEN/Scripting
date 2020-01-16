@@ -3,6 +3,9 @@
 namespace Controllers {
     public class ScriptSphereController : MonoBehaviour {
         [SerializeField] private float speed = 1f;
+        [SerializeField] private float initialVerticalPosition = 0f;
+        [SerializeField] private float finalVerticalPosition = 1f;
+
         private Transform sphereTransform;
         private float t;
         private bool isAscending;
@@ -24,7 +27,10 @@ namespace Controllers {
                 if (t <= 0f) isAscending = true;
             }
             
-            sphereTransform.position = new Vector3(position.x, Mathf.Lerp(0f, 2f, t), position.z);
+            sphereTransform.position = new Vector3(
+                position.x,
+                Mathf.Lerp(initialVerticalPosition, finalVerticalPosition, t),
+                position.z);
         }
     }
 }
